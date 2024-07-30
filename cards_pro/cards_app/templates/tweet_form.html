@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}
+cards and apps
+{% endblock title %}
+
+{% block content %}
+   <h1 class='text-center'> this messige write on form</h1>
+   {% if form.instance.px %}
+     edit Tweet
+     {% else %}
+     Create tweet
+   {% endif %}
+
+   <form method="POST" enctype='multipart/form-data' class='form'>
+      {% csrf_token %}
+      {{form.as_p}}                                       
+
+      <button class="btn btn-warning" type="submit">Submit</button>
+   </form>
+      <a href="{% url 'tweet_list'%}">Back to tweet List</a>
+{% endblock content %}
